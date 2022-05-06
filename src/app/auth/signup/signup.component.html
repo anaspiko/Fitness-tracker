@@ -22,7 +22,7 @@
       required
       minlength="6"
       #pwInput="ngModel">
-      <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
+      <!-- <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint> -->
     </mat-form-field> <br>
     <mat-form-field>
       <input
@@ -30,6 +30,7 @@
         placeholder="Your birthdate."
         [matDatepicker]="picker"
         [max]="maxDate"
+        name="date"
         ng ngModel
         required>
       <mat-datepicker-toggle
@@ -38,6 +39,7 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-checkbox ngModel name="agree" labelPosition="before" required color="primary">Agree to Terms and Conditions.</mat-checkbox>
-    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+    <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
   </form>
 </section>

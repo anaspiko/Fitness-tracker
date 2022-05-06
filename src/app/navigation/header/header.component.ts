@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   @Output() sidenavToggle = new EventEmitter<void>();
-  isAuth: boolean = false;
+  isAuth = false;
   authSubscription: Subscription;
 
   constructor(private authService: AuthService) { }
