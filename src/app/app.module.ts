@@ -14,6 +14,8 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from 'src/environments/environment';
 import { AuthModule } from './auth/auth.module';
 import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducer';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase, 'ng-fitness-tracker'),
     AuthModule,
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence(),
+    StoreModule.forRoot(reducers)
   ],
   providers: [AuthService, TrainingService, AngularFirestore],
   bootstrap: [AppComponent],
